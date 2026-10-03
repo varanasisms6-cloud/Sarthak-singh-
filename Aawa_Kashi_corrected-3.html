@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aawa Kashi | Discover the Soul of Varanasi</title>
+<meta name="description" content="Aawa Kashi - Explore verified Varanasi temples, hotels, guides, food, shopping and experiences.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f6f7fb;color:#172033}
+header{background:#061b35;color:#fff;position:sticky;top:0;z-index:999}
+nav{max-width:1250px;height:70px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.logo{font-size:30px;font-weight:bold;color:#ffb52e}.logo span{color:#fff}
+nav ul{display:flex;gap:25px;list-style:none}nav a{color:#fff;text-decoration:none;font-size:15px}
+nav a:hover{color:#ffb52e}.menu-btn{display:none;font-size:28px;cursor:pointer}
+.hero{min-height:650px;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.68)),url("https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=2000&q=90") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 20px}
+.hero-content{color:#fff;max-width:950px}.badge{display:inline-block;padding:8px 18px;background:rgba(255,181,46,.9);color:#172033;border-radius:30px;font-weight:bold;margin-bottom:18px}
+.hero h1{font-size:72px;text-shadow:3px 3px 15px #000}.hero h2{color:#ffd166;font-size:30px;margin:15px 0}.hero p{font-size:20px;line-height:1.7;margin:10px}
+.btn{display:inline-block;padding:13px 22px;margin:8px 4px;border:0;border-radius:30px;background:#ffad1f;color:#071b34;text-decoration:none;font-weight:bold;cursor:pointer;transition:.3s}
+.btn:hover{transform:translateY(-3px);background:#ffc44d}.outline{background:transparent;color:#fff;border:2px solid #fff}
+.search-box{max-width:1050px;margin:-45px auto 20px;background:#fff;padding:25px;border-radius:18px;box-shadow:0 10px 35px rgba(0,0,0,.18);position:relative}
+.search-row{display:flex;gap:10px;margin-top:15px}.search-row input,.search-row select{flex:1;padding:15px;border:1px solid #ddd;border-radius:9px;outline:none}
+.section{max-width:1250px;margin:auto;padding:70px 20px}.section-title{text-align:center;margin-bottom:45px}.section-title h2{font-size:40px;margin-bottom:10px}.section-title p{color:#666}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 25px rgba(0,0,0,.09);transition:.3s}
+.card:hover{transform:translateY(-7px);box-shadow:0 15px 35px rgba(0,0,0,.15)}
+.card-img{width:100%;height:220px;object-fit:cover;display:block;background:#eee}.card-content{padding:23px}.card-content h3{font-size:21px;margin-bottom:10px}.card-content p{color:#666;line-height:1.65;font-size:14px}
+.tag{display:inline-block;padding:6px 11px;background:#fff0c7;color:#8b5900;border-radius:20px;font-size:12px;font-weight:bold;margin-bottom:10px}.info{margin-top:14px;line-height:1.8;font-size:14px}
+.temples{background:#fffaf0}.hotels{background:#f5f8ff}.guides{background:#fdf7ef}.restaurants{background:#fff}.shopping{background:#fff7ef}
+.experience{background:#061b35;color:#fff}.experience .section-title p{color:#ccd5e2}
+.why{background:#061b35;color:#fff}.why-grid{max-width:1250px;margin:auto;padding:70px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.why-item{padding:20px}.why-item div{font-size:45px;margin-bottom:12px}.why-item p{color:#ccd5e2;margin-top:8px;line-height:1.5}
+.contact{max-width:950px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:25px}.contact-card{background:#fff;padding:30px;border-radius:18px;box-shadow:0 6px 25px rgba(0,0,0,.08)}.contact-card h3{margin-bottom:12px}.contact-card a{color:#0066cc;text-decoration:none}
+footer{background:#031225;color:#fff;text-align:center;padding:45px 20px}.footer-logo{font-size:32px;color:#ffb52e;font-weight:bold;margin-bottom:10px}footer p{color:#cbd3df;margin:7px}
+.whatsapp{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:2000;box-shadow:0 5px 20px rgba(0,0,0,.3)}
+.no-result{display:none;text-align:center;padding:25px;background:#fff;border-radius:15px;margin-top:20px;color:#666}
+@media(max-width:850px){
+nav ul{display:none;position:absolute;top:70px;left:0;width:100%;background:#061b35;flex-direction:column;text-align:center;padding:20px}
+nav ul.active{display:flex}.menu-btn{display:block}.hero{min-height:600px}.hero h1{font-size:48px}
+.cards{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:repeat(2,1fr)}.contact{grid-template-columns:1fr}.search-row{flex-direction:column}
+}
+@media(max-width:500px){.hero h1{font-size:38px}.hero h2{font-size:23px}.hero p{font-size:16px}.cards{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr}.section-title h2{font-size:31px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">Aawa <span>Kashi</span></div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<ul id="menu">
+<li><a href="#home">Home</a></li><li><a href="#temples">Temples</a></li><li><a href="#hotels">Hotels</a></li>
+<li><a href="#guides">Guides</a></li><li><a href="#food">Food</a></li><li><a href="#shopping">Shopping</a></li><li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="badge">🙏 Welcome to Kashi</div>
+<h1>Aawa Kashi</h1>
+<h2>आवा काशी • हर हर महादेव 🕉️</h2>
+<p>Discover the ancient soul of Varanasi.</p>
+<p>Temples • Ganga Ghats • Hotels • Guides • Food • Shopping • Experiences</p>
+<a href="#temples" class="btn">Explore Kashi</a>
+<a href="#guides" class="btn outline">Find a Guide</a>
+</div>
+</section>
+
+<div class="search-box">
+<h2>🔎 Find Your Kashi Experience</h2>
+<div class="search-row">
+<input id="searchInput" type="text" placeholder="Search temple, hotel, guide...">
+<select id="category">
+<option value="">All Places</option><option value="temple">Temple</option><option value="hotel">Hotel</option>
+<option value="guide">Tourist Guide</option><option value="restaurant">Restaurant</option><option value="shopping">Shopping</option>
+</select>
+<button class="btn" onclick="searchPlace()">Search</button>
+</div>
+<p id="searchResult" style="margin-top:15px"></p>
+</div>
+
+<!-- TEMPLES -->
+<section class="section temples" id="temples">
+<div class="section-title"><h2>🛕 Famous Temples of Kashi</h2><p>Named places now use place-specific images and factual descriptions.</p></div>
+<div class="cards">
+
+<div class="card place-card" data-name="shri kashi vishwanath temple" data-category="temple">
+<img class="card-img" src="https://i.pinimg.com/1200x/4b/29/ee/4b29ee1f000c0cb2f18c3f1a501d5c8d.jpg" alt="Shri Kashi Vishwanath Temple">
+<div class="card-content"><span class="tag">⭐ Major Attraction</span><h3>Shri Kashi Vishwanath Temple</h3>
+<p>One of Varanasi's most important Shiva temples and one of the twelve Jyotirlingas.</p>
+<div class="info">📍 Lahori Tola, Varanasi<br>🙏 Deity: Lord Shiva<br>🕉️ Jyotirlinga temple</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shri+Kashi+Vishwanath+Temple+Varanasi">📍 Directions</a></div></div>
+
+<div class="card place-card" data-name="maa annapurna temple" data-category="temple">
+<img class="card-img" src="https://static.bhaktibharat.com/photo/mandir/shri-annapurna-mandir-varanasi/temple-gate.jpg" alt="Maa Annapurna Temple">
+<div class="card-content"><span class="tag">🛕 Temple</span><h3>Maa Annapurna Temple</h3>
+<p>A temple dedicated to Goddess Annapurna, located close to Kashi Vishwanath.</p>
+<div class="info">📍 Vishwanath Gali, Varanasi<br>🙏 Goddess Annapurna<br>🍚 Goddess of nourishment</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Maa+Annapurna+Temple+Varanasi">📍 Directions</a></div></div>
+
+<div class="card place-card" data-name="kal bhairav temple" data-category="temple">
+<img class="card-img" src="https://i0.wp.com/varanasivideos.com/wp-content/uploads/2019/06/Kaal-Bhairav-Temple-Otuside-View-1024x683.jpg?resize=1024%2C683" alt="Kal Bhairav Temple">
+<div class="card-content"><span class="tag">🕉️ Ancient Temple</span><h3>Kal Bhairav Temple</h3>
+<p>An ancient Varanasi temple dedicated to Kal Bhairav, traditionally regarded as the guardian of Kashi.</p>
+<div class="info">📍 Vishweshwarganj area<br>🙏 Deity: Kal Bhairav<br>🕉️ Important pilgrimage site</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shri+Kaal+Bhairav+Temple+Varanasi">📍 Directions</a></div></div>
+
+<div class="card place-card" data-name="sankat mochan hanuman temple" data-category="temple">
+<img class="card-img" src="https://assets.zyrosite.com/cdn-cgi/image/format%3Dauto%2Cw%3D768%2Ch%3D722%2Cfit%3Dcrop%2Ctrim%3D0%3B0%3B334.8%3B0/A1aBw2NxzqTzawVj/snapinst.app_443541433_1528817854646460_5549757461046439437_n_1080-mP422V0e5KIGlBj0.jpg" alt="Sankat Mochan Hanuman Temple">
+<div class="card-content"><span class="tag">🙏 Hanuman Temple</span><h3>Sankat Mochan Hanuman Temple</h3>
+<p>A well-known Hanuman temple near the Assi area of Varanasi.</p>
+<div class="info">📍 Bhadaini / Sankat Mochan area<br>🙏 Lord Hanuman<br>🌸 Spiritual landmark</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Sankat+Mochan+Hanuman+Temple+Varanasi">📍 Directions</a></div></div>
+
+<div class="card place-card" data-name="tulsi manas temple" data-category="temple">
+<img class="card-img" src="https://kashitours.com/image/Tulsi-manas-mandir.jpeg" alt="Tulsi Manas Temple">
+<div class="card-content"><span class="tag">📖 Heritage</span><h3>Tulsi Manas Temple</h3>
+<p>A marble temple dedicated to Lord Rama and associated with Goswami Tulsidas.</p>
+<div class="info">📍 Durgakund, Varanasi<br>🙏 Lord Rama<br>📖 Ramcharitmanas tradition</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tulsi+Manas+Temple+Varanasi">📍 Directions</a></div></div>
+
+<div class="card place-card" data-name="shri vishwanath temple bhu" data-category="temple">
+<img class="card-img" src="https://i.pinimg.com/originals/15/19/ec/1519ec6e2f103d463bb7b5643bf6b264.jpg" alt="Shri Vishwanath Temple BHU">
+<div class="card-content"><span class="tag">🏛️ BHU</span><h3>Shri Vishwanath Temple – BHU</h3>
+<p>The New Vishwanath Temple is located inside the Banaras Hindu University campus.</p>
+<div class="info">📍 BHU Campus<br>🙏 Lord Shiva<br>🏛️ Marble temple</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Shri+Vishwanath+Temple+BHU+Varanasi">📍 Directions</a></div></div>
+
+</div></section>
+
+<!-- HOTELS -->
+<section class="section hotels" id="hotels">
+<div class="section-title"><h2>🏨 Hotels & Heritage Stays</h2><p>Named properties use property-specific photos where a direct image source was available.</p></div>
+<div class="cards">
+
+<div class="card place-card" data-name="taj ganges" data-category="hotel"><img class="card-img" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/f5/79/f4/caption.jpg?h=-1&s=1&w=1400" alt="Taj Ganges Varanasi">
+<div class="card-content"><span class="tag">⭐ Luxury</span><h3>Taj Ganges</h3><p>Luxury hotel in the Nadesar area with landscaped grounds and hospitality facilities.</p><div class="info">📍 Nadesar, Varanasi<br>🏨 Luxury hotel<br>🌿 Garden setting</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taj+Ganges+Varanasi">📍 View Hotel</a></div></div>
+
+<div class="card place-card" data-name="guleria kothi" data-category="hotel"><img class="card-img" src="https://www.indusbound.com/photoset/Guleria%20Kothi/Guleria%20Kothi%203.jpg" alt="Guleria Kothi Varanasi">
+<div class="card-content"><span class="tag">🏛️ Heritage</span><h3>Guleria Kothi</h3><p>A restored riverfront heritage boutique hotel near Ram Ghat.</p><div class="info">📍 Ram Ghat area<br>🏛️ Heritage property<br>🌊 Ganga-side location</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Guleria+Kothi+Varanasi">📍 View Hotel</a></div></div>
+
+<div class="card place-card" data-name="palace on ganges" data-category="hotel"><img class="card-img" src="https://pix8.agoda.net/hotelImages/513/51336/51336_17050511150052800009.jpg?ca=6&ce=1&s=1024x768" alt="Palace on Ganges Varanasi">
+<div class="card-content"><span class="tag">🌊 Ghat Stay</span><h3>Palace on Ganges</h3><p>A heritage-style hotel close to Assi Ghat and the riverfront.</p><div class="info">📍 Assi Ghat<br>🌊 Near Ganga<br>🏨 Hotel</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Palace+on+Ganges+Varanasi">📍 View Hotel</a></div></div>
+
+<div class="card place-card" data-name="hotel varanasi heritage" data-category="hotel"><img class="card-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=85" alt="Hotel Varanasi Heritage">
+<div class="card-content"><span class="tag">💰 Popular Stay</span><h3>Hotel Varanasi Heritage</h3><p>Hotel option around the Assi/Tulsi Ghat side of Varanasi.</p><div class="info">📍 Bhadaini / Tulsi Ghat area<br>🏨 Hotel<br>🌊 Riverfront area</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hotel+Varanasi+Heritage">📍 View Hotel</a></div></div>
+
+<div class="card place-card" data-name="pearl courtyard" data-category="hotel"><img class="card-img" src="https://uttarpradeshhotels.com/hotels_photo/uttarpradesh/PearlCourtyard/354501045.jpg" alt="Pearl Courtyard Varanasi">
+<div class="card-content"><span class="tag">🏨 City Stay</span><h3>Pearl Courtyard</h3><p>A hotel around Godowliya/Luxa in central Varanasi.</p><div class="info">📍 Godowliya, Varanasi<br>🏨 Hotel<br>🛍️ Central city area</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Pearl+Courtyard+Varanasi">📍 View Hotel</a></div></div>
+
+<div class="card place-card" data-name="taj nadesar palace" data-category="hotel"><img class="card-img" src="https://static.travelated.com/storage/hotels3/317/317538/property/1294392639.webp?format=webp&mode=crop&scale=down&w=3840&webp.quality=75" alt="Taj Nadesar Palace">
+<div class="card-content"><span class="tag">👑 Palace Stay</span><h3>Taj Nadesar Palace</h3><p>A historic luxury palace property in the Nadesar area of Varanasi.</p><div class="info">📍 Nadesar, Varanasi<br>👑 Luxury heritage property<br>🌿 Landscaped grounds</div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taj+Nadesar+Palace+Varanasi">📍 View Hotel</a></div></div>
+
+</div></section>
+
+<!-- GUIDES -->
+<section class="section guides" id="guides">
+<div class="section-title"><h2>🧑‍🏫 Tourist Guides of Varanasi</h2><p>Searchable guide listings for your project.</p></div>
+<div class="cards">
+<div class="card place-card" data-name="my tour guide varanasi" data-category="guide"><img class="card-img" src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=85" alt="Tour guide"><div class="card-content"><span class="tag">⭐ Local Tour Operator</span><h3>My Tour Guide Varanasi</h3><p>Tour service for visitors exploring Varanasi and nearby attractions.</p><div class="info">📍 Varanasi<br>🗺️ Sightseeing assistance</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=My+Tour+Guide+Varanasi">📍 View Guide</a></div></div>
+<div class="card place-card" data-name="tour guide in varanasi" data-category="guide"><img class="card-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85" alt="Tour guide in Varanasi"><div class="card-content"><span class="tag">🗺️ Sightseeing</span><h3>Tour Guide in Varanasi</h3><p>Guided sightseeing service for visitors exploring the city.</p><div class="info">📍 Varanasi<br>🗺️ Sightseeing tours</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tour+Guide+in+Varanasi">📍 View Guide</a></div></div>
+<div class="card place-card" data-name="varanasi tourist guide services" data-category="guide"><img class="card-img" src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=85" alt="Varanasi tourist guide services"><div class="card-content"><span class="tag">🧭 Local Service</span><h3>Varanasi Tourist Guide Services</h3><p>Local sightseeing assistance for visitors.</p><div class="info">📍 Varanasi<br>🗺️ Tour assistance</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Varanasi+Tourist+Guide+Services">📍 View Guide</a></div></div>
+</div></section>
+
+<!-- FOOD -->
+<section class="section restaurants" id="food">
+<div class="section-title"><h2>🍛 Taste of Banaras</h2><p>Food discovery section.</p></div>
+<div class="cards">
+<div class="card place-card" data-name="baati chokha" data-category="restaurant"><img class="card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85" alt="Baati Chokha"><div class="card-content"><span class="tag">🍛 Traditional</span><h3>Baati Chokha</h3><p>Traditional North Indian food and Banarasi-style flavours.</p><div class="info">🍛 Traditional cuisine<br>📍 Varanasi</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Baati+Chokha+Restaurant+Varanasi">📍 Find Restaurant</a></div></div>
+<div class="card place-card" data-name="varanasi cafes restaurants" data-category="restaurant"><img class="card-img" src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=85" alt="Varanasi restaurants"><div class="card-content"><span class="tag">☕ Cafe</span><h3>Varanasi Cafes & Restaurants</h3><p>Explore cafes and restaurants around popular areas.</p><div class="info">☕ Cafes<br>🍛 Indian food<br>📍 Godowliya / Assi / Lanka</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=restaurants+near+Godowliya+Varanasi">🍽️ Explore Food</a></div></div>
+<div class="card place-card" data-name="banarasi street food" data-category="restaurant"><img class="card-img" src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=85" alt="Banarasi street food"><div class="card-content"><span class="tag">🥤 Local Speciality</span><h3>Banarasi Street Food</h3><p>Try local favourites including kachori, jalebi, lassi and paan.</p><div class="info">🥟 Kachori<br>🥤 Lassi<br>🍃 Banarasi Paan</div><a class="btn" href="#contact">Ask Aawa Kashi</a></div></div>
+</div></section>
+
+<!-- SHOPPING -->
+<section class="section shopping" id="shopping">
+<div class="section-title"><h2>🛍️ Shop Banarasi Culture</h2><p>Traditional products and local markets.</p></div>
+<div class="cards">
+<div class="card place-card" data-name="banarasi silk sarees" data-category="shopping"><img class="card-img" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85" alt="Banarasi Silk Sarees"><div class="card-content"><span class="tag">🧵 Handloom</span><h3>Banarasi Silk Sarees</h3><p>Explore traditional Banarasi silk sarees and handloom products.</p><div class="info">🧵 Banarasi Silk<br>👗 Sarees<br>🎁 Traditional gifts</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Banarasi+Silk+Saree+shops+Varanasi">🛍️ Find Shops</a></div></div>
+<div class="card place-card" data-name="banarasi handicrafts" data-category="shopping"><img class="card-img" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=900&q=85" alt="Banarasi handicrafts"><div class="card-content"><span class="tag">🎁 Handicrafts</span><h3>Banarasi Handicrafts</h3><p>Discover traditional crafts, textiles and local souvenirs.</p><div class="info">🎁 Souvenirs<br>🧵 Handloom<br>🏺 Local crafts</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=handicraft+shops+Varanasi">🛍️ Explore</a></div></div>
+<div class="card place-card" data-name="godowliya market" data-category="shopping"><img class="card-img" src="https://images.unsplash.com/photo-1609920658906-8223bd289001?auto=format&fit=crop&w=900&q=85" alt="Godowliya Market"><div class="card-content"><span class="tag">🛒 Shopping</span><h3>Godowliya Market</h3><p>A busy central shopping area in Varanasi.</p><div class="info">📍 Godowliya<br>🛍️ Local shopping<br>🍛 Food & street life</div><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Godowliya+Market+Varanasi">📍 View Market</a></div></div>
+</div></section>
+
+<!-- EXPERIENCES -->
+<section class="section experience">
+<div class="section-title"><h2>🌅 Must-Experience Kashi</h2><p>Experiences that define a Varanasi trip.</p></div>
+<div class="cards">
+<div class="card"><img class="card-img" src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85" alt="Ganga Ghats"><div class="card-content"><h3>🌅 Sunrise at Ganga Ghats</h3><p>Watch the morning light over the Ganga and historic ghats.</p><a class="btn" href="#contact">Plan Experience</a></div></div>
+<div class="card"><img class="card-img" src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=900&q=85" alt="Ganga Boat Ride"><div class="card-content"><h3>🚤 Ganga Boat Ride</h3><p>Experience Varanasi from the river and see the historic ghats.</p><a class="btn" href="#contact">Book Enquiry</a></div></div>
+<div class="card"><img class="card-img" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=900&q=85" alt="Ganga Aarti"><div class="card-content"><h3>🔥 Ganga Aarti</h3><p>Experience the evening spiritual atmosphere on the Ganga ghats.</p><a class="btn" href="#contact">Plan Visit</a></div></div>
+</div></section>
+
+<section class="why"><div class="why-grid">
+<div class="why-item"><div>🛕</div><h3>Temples</h3><p>Discover historic temples of Kashi.</p></div>
+<div class="why-item"><div>🧑‍🏫</div><h3>Local Guides</h3><p>Explore the city with local assistance.</p></div>
+<div class="why-item"><div>🏨</div><h3>Hotels</h3><p>Find stays for different travel needs.</p></div>
+<div class="why-item"><div>🌅</div><h3>Experiences</h3><p>Ghats, Ganga, food and culture.</p></div>
+</div></section>
+
+<section class="section" id="contact">
+<div class="section-title"><h2>📞 Contact Aawa Kashi</h2><p>Need help planning your Varanasi trip?</p></div>
+<div class="contact">
+<div class="contact-card"><h3>📱 Call Us</h3><p><a href="tel:9263996276">9263996276</a></p><br><h3>📧 Email</h3><p><a href="mailto:mountvinayak155@gmail.com">mountvinayak155@gmail.com</a></p></div>
+<div class="contact-card"><h3>💬 WhatsApp</h3><p>Talk directly with Aawa Kashi.</p><a class="btn" target="_blank" href="https://wa.me/919263996276">WhatsApp Us</a></div>
+</div></section>
+
+<footer><div class="footer-logo">Aawa Kashi</div><p>आवा काशी 🙏</p><p>Kashi ke har experience, ek jagah.</p><p>© 2026 Aawa Kashi • Varanasi</p></footer>
+<a class="whatsapp" target="_blank" href="https://wa.me/919263996276">💬</a>
+
+<script>
+function toggleMenu(){document.getElementById("menu").classList.toggle("active");}
+
+function searchPlace(){
+  const input=document.getElementById("searchInput").value.trim().toLowerCase();
+  const category=document.getElementById("category").value.toLowerCase();
+  const cards=[...document.querySelectorAll(".place-card")];
+  const result=document.getElementById("searchResult");
+  let found=0;
+
+  cards.forEach(card=>{
+    const name=card.dataset.name;
+    const type=card.dataset.category;
+    const matchText=!input || name.includes(input);
+    const matchCategory=!category || type===category;
+    const show=matchText && matchCategory;
+    card.style.display=show?"block":"none";
+    if(show) found++;
+  });
+
+  if(!input && !category){
+    cards.forEach(c=>c.style.display="block");
+    result.innerHTML="Showing all places.";
+    return;
+  }
+
+  result.innerHTML=found
+    ? "🔎 Found <b>"+found+"</b> matching place(s)."
+    : "❌ No matching place found. Try another name or category.";
+
+  if(found){
+    const first=cards.find(c=>c.style.display!=="none");
+    first.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+</script>
+</body>
+</html>
