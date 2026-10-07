@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Street Kashi | Explore Varanasi</title>
+<meta name="description" content="Street Kashi - Explore temples, places, guides, transport, stays, food and experiences in Varanasi.">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{background:#f4f6f9;color:#172033}
+header{background:#061b35;color:#fff;position:sticky;top:0;z-index:1000;box-shadow:0 3px 15px rgba(0,0,0,.18)}
+nav{max-width:1200px;height:68px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.logo{font-size:28px;font-weight:800;color:#ffb52e}.logo span{color:#fff}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+nav a:hover{color:#ffb52e}
+.menu-btn{display:none;font-size:28px;cursor:pointer}
+
+.hero{
+  min-height:430px;
+  background:linear-gradient(rgba(4,17,35,.45),rgba(4,17,35,.78)),
+  url("https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=1800&q=90") center/cover;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 18px
+}
+.hero-content{max-width:850px;color:#fff}
+.badge{display:inline-block;background:#ffb52e;color:#172033;padding:7px 16px;border-radius:30px;font-weight:bold;margin-bottom:15px}
+.hero h1{font-size:62px;text-shadow:2px 3px 12px #000}
+.hero h2{color:#ffd166;margin:10px 0;font-size:27px}
+.hero p{font-size:18px;line-height:1.6}
+.btn{display:inline-block;padding:11px 18px;border:0;border-radius:25px;background:#ffb52e;color:#061b35;text-decoration:none;font-weight:bold;cursor:pointer;margin:6px}
+.btn:hover{transform:translateY(-2px);background:#ffd166}
+.outline{background:transparent;color:#fff;border:1px solid #fff}
+
+.container{max-width:1180px;margin:auto;padding:0 18px}
+.search-box{
+  background:#fff;margin:-35px auto 25px;position:relative;z-index:5;
+  padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.13)
+}
+.search-row{display:flex;gap:10px;margin-top:12px}
+.search-row input,.search-row select{
+  flex:1;padding:13px;border:1px solid #d8dce3;border-radius:9px;outline:none
+}
+
+.section{padding:48px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
+.section-head h2{font-size:30px}
+.section-head p{color:#687080;margin-top:5px;font-size:14px}
+
+.category{
+  background:#fff;border-radius:16px;padding:16px;
+  box-shadow:0 5px 22px rgba(0,0,0,.07);margin-bottom:18px
+}
+.category-title{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid #e9edf2;padding-bottom:12px;margin-bottom:14px
+}
+.category-title h3{font-size:20px}
+.category-title span{font-size:12px;color:#6c7480}
+
+.items{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.item{
+  border:1px solid #e3e7ed;border-radius:12px;padding:14px;
+  background:#fafbfc;min-height:118px;display:flex;flex-direction:column;
+  justify-content:space-between
+}
+.item h4{font-size:15px;margin-bottom:5px}
+.item p{font-size:12px;color:#687080;line-height:1.45}
+.item .small-btn{
+  border:0;background:#061b35;color:#fff;border-radius:18px;
+  padding:7px 10px;font-size:11px;cursor:pointer;margin-top:10px
+}
+.item .small-btn:hover{background:#ffb52e;color:#061b35}
+
+.temple{background:#fffaf0}
+.other{background:#f5f8ff}
+.guide{background:#fdf7ef}
+.transport{background:#f2fbf8}
+.stay{background:#f8f5ff}
+.food{background:#fff7ef}
+.experience{background:#eef5ff}
+
+.price{color:#b66a00;font-weight:bold;font-size:12px;margin-top:5px}
+
+footer{background:#031225;color:#fff;text-align:center;padding:35px 18px;margin-top:20px}
+.footer-logo{font-size:28px;color:#ffb52e;font-weight:bold;margin-bottom:8px}
+.creator-credit{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);color:#fff;font-size:15px}.creator-credit span{color:#aeb9c8;font-size:12px}
+footer p{color:#cbd3df;margin:5px;font-size:13px}
+
+.whatsapp{
+ position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;
+ background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;
+ font-size:25px;text-decoration:none;z-index:2000;box-shadow:0 4px 16px rgba(0,0,0,.25)
+}
+
+/* DETAIL POPUP */
+.modal{
+ display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);
+ z-index:3000;align-items:center;justify-content:center;padding:18px
+}
+.modal.active{display:flex}
+.modal-box{
+ background:#fff;width:min(650px,100%);max-height:88vh;overflow:auto;
+ border-radius:18px;padding:25px;position:relative
+}
+.close{
+ position:absolute;right:15px;top:12px;border:0;background:#eee;
+ width:34px;height:34px;border-radius:50%;font-size:20px;cursor:pointer
+}
+.modal-box h2{padding-right:40px;margin-bottom:8px}
+.modal-box .modal-tag{color:#a56a00;font-weight:bold;font-size:13px}
+.modal-box p{color:#555;line-height:1.7;margin:12px 0}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}
+.detail{
+ background:#f5f7fa;padding:12px;border-radius:10px;font-size:13px
+}
+.detail b{display:block;margin-bottom:4px;color:#172033}
+
+.no-result{text-align:center;padding:20px;color:#777;display:none}
+
+@media(max-width:850px){
+ nav ul{display:none;position:absolute;top:68px;left:0;width:100%;background:#061b35;
+ flex-direction:column;text-align:center;padding:18px}
+ nav ul.active{display:flex}.menu-btn{display:block}
+ .hero{min-height:390px}.hero h1{font-size:46px}
+ .items{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+ .hero h1{font-size:38px}.hero h2{font-size:21px}.hero p{font-size:15px}
+ .section{padding:35px 0}.section-head{display:block}
+ .items{grid-template-columns:1fr}
+ .search-row{flex-direction:column}
+ .detail-grid{grid-template-columns:1fr}
+}
+
+/* ===== STREET KASHI PREMIUM PRESENTATION LAYER ===== */
+:root{--navy:#061b35;--gold:#ffb52e;--cream:#fffaf0;--muted:#687080;--card:#ffffff;--line:#e6eaf0}
+body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f6f8fb}
+.hero{min-height:560px;background:linear-gradient(90deg,rgba(3,15,30,.84),rgba(3,15,30,.38)),url("https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=2000&q=92") center/cover}
+.hero-content{text-align:left;margin-right:auto;margin-left:auto}
+.hero h1{font-size:clamp(48px,7vw,78px);letter-spacing:-2px}
+.hero h2{font-size:clamp(21px,3vw,31px)}
+.hero p{max-width:700px;font-size:18px}
+.hero-kicker{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#ffe2a0;font-weight:800;margin-bottom:12px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.hero-pills span{padding:7px 12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);border-radius:999px;font-size:12px;color:#fff}
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;box-shadow:0 8px 28px rgba(6,27,53,.06)}
+.stat-card strong{display:block;font-size:25px;color:var(--navy)}
+.stat-card span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.pitch{background:linear-gradient(135deg,#061b35,#102f54);color:#fff;border-radius:22px;padding:30px;margin:20px 0 8px;box-shadow:0 12px 35px rgba(6,27,53,.18)}
+.pitch h2{font-size:27px;margin-bottom:8px}.pitch p{color:#dbe6f2;line-height:1.7;max-width:850px}
+.pitch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.pitch-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);padding:15px;border-radius:14px}.pitch-card b{display:block;color:#ffd166;margin-bottom:5px}.pitch-card span{font-size:12px;color:#dbe6f2}
+.section-head h2{letter-spacing:-.5px}.category{border:1px solid var(--line);transition:.2s}.category:hover{box-shadow:0 10px 30px rgba(6,27,53,.10)}
+.item{transition:transform .2s,box-shadow .2s;background:#fff}.item:hover{transform:translateY(-3px);box-shadow:0 9px 22px rgba(6,27,53,.09)}
+.item .small-btn{display:inline-block;text-decoration:none}
+.quick-nav{display:flex;gap:8px;overflow:auto;padding:3px 0 12px;scrollbar-width:none}.quick-nav a{white-space:nowrap;text-decoration:none;color:var(--navy);background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700}.quick-nav a:hover{background:var(--gold)}
+.verified-note{font-size:11px;color:#5e6a78;margin-top:9px}
+@media(max-width:800px){.stats-strip{grid-template-columns:repeat(2,1fr)}.pitch-grid{grid-template-columns:1fr}.hero{min-height:600px}.hero-content{text-align:center}.hero p{margin-left:auto;margin-right:auto}.hero-pills{justify-content:center}}
+@media(max-width:520px){.stats-strip{grid-template-columns:1fr 1fr}.hero h1{font-size:48px}.search-row{flex-direction:column}.search-row .btn{width:100%}.section{padding:34px 0}}
+
+
+.place-photo{width:100%;height:190px;object-fit:cover;border-radius:14px 14px 0 0;display:block;background:#e8edf4}.item:has(.place-photo){overflow:hidden;padding:0}.item:has(.place-photo) .item-body{padding:16px}
+@media(max-width:700px){.place-photo{height:170px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <div class="logo">Street <span>Kashi</span></div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <ul id="menu">
+    <li><a href="#temples">Temple</a></li>
+    <li><a href="#other">Other Places</a></li>
+    <li><a href="#guide">Guide</a></li>
+    <li><a href="#transport">Transport</a></li>
+    <li><a href="#stay">Stay</a></li>
+    <li><a href="#food">Food</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#nightlife">Nightlife</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">🙏 Street Kashi</div>
+    <h1>Explore Kashi</h1>
+    <h2>आवा काशी • हर हर महादेव 🕉️</h2>
+    <p>Temples, places, guides, transport, stays, food and local experiences — all in one simple place.</p>
+    <a href="#temples" class="btn">Explore Sections</a>
+  </div>
+</section>
+
+<div class="container">
+  
+<div class="quick-nav">
+<a href="#temples">🛕 Temples</a><a href="#places">🌊 Ghats & Places</a><a href="#guides">🧑‍🏫 Guides</a><a href="#transport">🛶 Boats</a><a href="#stay">🏨 Stay</a><a href="#food">🍛 Food</a><a href="#experience">✨ Experiences</a><a href="#night">🌙 Evening</a>
+</div>
+<div class="stats-strip">
+<div class="stat-card"><strong>40+</strong><span>Curated experiences & places</span></div>
+<div class="stat-card"><strong>8+</strong><span>Travel categories</span></div>
+<div class="stat-card"><strong>Local-first</strong><span>Guides & businesses</span></div>
+<div class="stat-card"><strong>1 Platform</strong><span>Plan your Kashi journey</span></div>
+</div>
+<div class="pitch">
+<h2>💡 Why Street Kashi?</h2>
+<p>A local tourism discovery platform designed to connect travellers with authentic Kashi experiences and local service providers — while making trip planning simpler.</p>
+<div class="pitch-grid"><div class="pitch-card"><b>For Travellers</b><span>Discover, compare and enquire about stays, guides, food and experiences.</span></div><div class="pitch-card"><b>For Local Businesses</b><span>Digital visibility for hotels, guest houses, guides, boats, restaurants and shops.</span></div><div class="pitch-card"><b>For the Ecosystem</b><span>Build a trusted local marketplace around responsible and verified tourism.</span></div></div>
+</div>
+
+<div class="search-box">
+    <h2>🔎 Find Your Kashi</h2>
+    <div class="search-row">
+      <input id="searchInput" type="text" placeholder="Search temple, hotel, guide, boat, food, place...">
+      <select id="category">
+        <option value="">All Sections</option>
+        <option value="temple">Temple</option>
+        <option value="other">Other Places</option>
+        <option value="guide">Guide</option>
+        <option value="transport">Transport</option>
+        <option value="stay">Stay</option>
+        <option value="food">Food</option>
+        <option value="experience">Experience</option>
+        <option value="nightlife">Nightlife</option>
+      </select>
+      <button class="btn" onclick="searchItems()">Search</button>
+    </div>
+    <p id="searchResult" style="margin-top:10px"></p>
+  </div>
+
+  <!-- 1. TEMPLE -->
+  <section class="section temple" id="temples">
+    <div class="section-head">
+      <div><h2>🛕 Temples</h2><p>Important temples and spiritual places of Kashi.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Famous Temples</h3><span>10 places</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="kashi vishwanath temple jyotirlinga" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kashi%20vishwanath%20temple%20varanasi.jpg" alt="Kashi Vishwanath Temple Jyotirlinga" loading="lazy">
+          <div><h4>🕉️ Kashi Vishwanath Temple</h4><p>One of the most important Shiva temples in Kashi.</p></div>
+          <button class="small-btn" onclick="openDetails('Kashi Vishwanath Temple','Temple','Major Shiva temple and important pilgrimage destination.','Lahori Tola, Varanasi','Lord Shiva','Pilgrimage','Entry rules apply')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="kal bhairav temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kaal%20Bhairav%20Temple%2C%20Varanasi.jpg" alt="Kal Bhairav Temple" loading="lazy">
+          <div><h4>🙏 Kaal Bhairav Temple</h4><p>Important temple dedicated to Kaal Bhairav.</p></div>
+          <button class="small-btn" onclick="openDetails('Kaal Bhairav Temple','Temple','A famous temple dedicated to Kaal Bhairav.','Vishweshwarganj area','Kaal Bhairav','Pilgrimage','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="annapurna temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Annapurna%20Temple%2C%20Varanasi.jpg" alt="Annapurna Temple" loading="lazy">
+          <div><h4>🌸 Maa Annapurna Temple</h4><p>Temple near the Vishwanath area.</p></div>
+          <button class="small-btn" onclick="openDetails('Maa Annapurna Temple','Temple','A temple dedicated to Goddess Annapurna.','Vishwanath Gali','Goddess Annapurna','Spiritual visit','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="sankat mochan hanuman temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Sankat%20Mochan%20Temple%20in%20Varanasi%20%288527226316%29.jpg" alt="Sankat Mochan Hanuman Temple" loading="lazy">
+          <div><h4>🙏 Sankat Mochan</h4><p>Famous Hanuman temple near the Assi side.</p></div>
+          <button class="small-btn" onclick="openDetails('Sankat Mochan Hanuman Temple','Temple','A well-known Hanuman temple near the Assi side of Varanasi.','Bhadaini / Sankat Mochan area','Lord Hanuman','Spiritual landmark','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="durga kund temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Durga%20Mandir%2C%20Varanasi.jpg" alt="Durga Kund Temple" loading="lazy">
+          <div><h4>🔱 Durga Kund Temple</h4><p>Popular temple in the Durgakund area.</p></div>
+          <button class="small-btn" onclick="openDetails('Durga Kund Temple','Temple','A well-known temple in the Durgakund area.','Durgakund, Varanasi','Goddess Durga','Temple visit','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="tulsi manas temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Tulsi%20Manas%20Temple%2C%20Varanasi.jpg" alt="Tulsi Manas Temple" loading="lazy">
+          <div><h4>📖 Tulsi Manas Temple</h4><p>Associated with Goswami Tulsidas and Ramcharitmanas.</p></div>
+          <button class="small-btn" onclick="openDetails('Tulsi Manas Temple','Temple','A marble temple associated with Goswami Tulsidas and Ramcharitmanas tradition.','Durgakund, Varanasi','Lord Rama','Heritage','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="new vishwanath temple bhu birla temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Shree%20Kashi%20Vishwanath%20Temple%20Situated%20in%20Banaras%20Hindu%20University%20Varanasi%20Uttar%20Pradesh%20India.jpg" alt="New Vishwanath Temple Bhu Birla Temple" loading="lazy">
+          <div><h4>🏛️ New Vishwanath Temple</h4><p>Birla Temple inside BHU campus.</p></div>
+          <button class="small-btn" onclick="openDetails('New Vishwanath Temple','Temple','Popular Vishwanath temple located in the BHU campus.','BHU, Varanasi','Lord Shiva','Campus visit','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="bharat mata temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Bharat%20Mata%20Temple%2C%20Varanasi.jpg" alt="Bharat Mata Temple" loading="lazy">
+          <div><h4>🇮🇳 Bharat Mata Temple</h4><p>Unique temple featuring a relief map of India.</p></div>
+          <button class="small-btn" onclick="openDetails('Bharat Mata Temple','Temple','A unique temple known for its marble relief map of India.','Cantonment, Varanasi','Bharat Mata','Heritage visit','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="mrityunjay mahadev temple" data-category="temple">
+          <div><h4>🔱 Mrityunjay Mahadev</h4><p>Historic Shiva temple of Kashi.</p></div>
+          <button class="small-btn" onclick="openDetails('Mrityunjay Mahadev Temple','Temple','Historic Shiva temple and spiritual destination.','Kashi, Varanasi','Lord Shiva','Pilgrimage','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="nepal temple kathwala temple" data-category="temple">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nepali%20Mandir%20Varanasi.jpg" alt="Nepal Temple Kathwala Temple" loading="lazy">
+          <div><h4>🛕 Nepali Temple</h4><p>Distinctive wooden architecture near Lalita Ghat.</p></div>
+          <button class="small-btn" onclick="openDetails('Nepali Temple','Temple','A distinctive temple known for its architecture near the Ganga riverfront.','Lalita Ghat, Varanasi','Lord Shiva','Heritage','Check locally')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. OTHER PLACES -->
+  <section class="section other" id="other">
+    <div class="section-head">
+      <div><h2>📍 Tourist Places</h2><p>Ghats, heritage sites, museums, Sarnath and other visitor spots.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Must-Visit Kashi & Nearby Places</h3><span>16 places</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="dashashwamedh ghat ganga aarti" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/DASHASHWAMEDH%20GHAT%2C%20VARANASI.jpg" alt="Dashashwamedh Ghat Ganga Aarti" loading="lazy">
+          <div><h4>🔥 Dashashwamedh Ghat</h4><p>Famous riverfront ghat and Ganga Aarti location.</p></div>
+          <button class="small-btn" onclick="openDetails('Dashashwamedh Ghat','Ghat','One of the best-known ghats on the Ganga riverfront.','Godowlia / Ganga riverfront','Ghat','Flexible','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="assi ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Varanasi%20Ghat%20Assi%20Ghat.jpg" alt="Assi Ghat" loading="lazy">
+          <div><h4>🌅 Assi Ghat</h4><p>Popular sunrise, evening and cultural spot.</p></div>
+          <button class="small-btn" onclick="openDetails('Assi Ghat','Ghat','Popular southern riverfront ghat known for sunrise and cultural activities.','Assi, Varanasi','Ghat','Flexible','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="manikarnika ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Manikarnika%20Ghat%2C%20Varanasi.jpg" alt="Manikarnika Ghat" loading="lazy">
+          <div><h4>🕯️ Manikarnika Ghat</h4><p>Historic and spiritually significant ghat.</p></div>
+          <button class="small-btn" onclick="openDetails('Manikarnika Ghat','Ghat','One of the most historically and spiritually significant ghats of Kashi.','Ganga riverfront, Varanasi','Heritage','Respectful visit','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="man mandir ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/ManMandir%20Ghat%2C%20Varanasi.jpg" alt="Man Mandir Ghat" loading="lazy">
+          <div><h4>🏛️ Man Mandir Ghat</h4><p>Historic ghat with heritage architecture.</p></div>
+          <button class="small-btn" onclick="openDetails('Man Mandir Ghat','Ghat','Historic riverfront location with heritage architecture.','Ganga riverfront, Varanasi','Heritage','Flexible','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="lalita ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lalita%20Ghat%2C%20Varanasi.JPG" alt="Lalita Ghat" loading="lazy">
+          <div><h4>🌊 Lalita Ghat</h4><p>Riverfront ghat near the old city.</p></div>
+          <button class="small-btn" onclick="openDetails('Lalita Ghat','Ghat','Historic ghat close to the old city and Nepali Temple.','Ganga riverfront, Varanasi','Ghat','Flexible','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="kedar ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Kedar%20Ghat%2C%20Varanasi.JPG" alt="Kedar Ghat" loading="lazy">
+          <div><h4>🌊 Kedar Ghat</h4><p>Popular ghat in southern old-city Varanasi.</p></div>
+          <button class="small-btn" onclick="openDetails('Kedar Ghat','Ghat','Popular riverfront ghat near the old city.','Ganga riverfront, Varanasi','Ghat','Flexible','Free entry')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="chet singh ghat" data-category="other">
+<img class="place-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Chet%20Singh%20Ghat%2C%20Varanasi.JPG" alt="Chet Singh Ghat" loading="lazy">
+          <div><h4>🏰 Chet Singh Ghat</h4><p>Historic ghat with a fort-like structure.</p></div>
+          <button class="small-btn" onclick="openDetails('Chet Singh Ghat','Ghat','Historic riverfront location associated with the Chet Singh fort complex.','Ganga riverfront, Varanasi','Heritage','Flexible','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="ramnagar fort" data-category="other">
+          <div><h4>🏰 Ramnagar Fort</h4><p>Heritage fort across the Ganga.</p></div>
+          <button class="small-btn" onclick="openDetails('Ramnagar Fort','Heritage','Historic fort and museum destination across the Ganga.','Ramnagar, Varanasi','Fort / Museum','Half day','Ticket varies')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="sarnath dhamek stupa chaukhandi stupa" data-category="other">
+          <div><h4>🦌 Sarnath</h4><p>Major Buddhist heritage destination near Varanasi.</p></div>
+          <button class="small-btn" onclick="openDetails('Sarnath','Heritage','Important Buddhist heritage area with multiple visitor sites.','Sarnath, Varanasi','Buddhist heritage','Half day','Ticket varies')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="dhamek stupa" data-category="other">
+          <div><h4>🛕 Dhamek Stupa</h4><p>Major Buddhist monument at Sarnath.</p></div>
+          <button class="small-btn" onclick="openDetails('Dhamek Stupa','Heritage','Important Buddhist monument within the Sarnath heritage area.','Sarnath, Varanasi','Buddhist monument','1–2 hours','Ticket varies')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="sarnath archaeological museum" data-category="other">
+          <div><h4>🏛️ Sarnath Archaeological Museum</h4><p>Historic artefacts and sculptures.</p></div>
+          <button class="small-btn" onclick="openDetails('Sarnath Archaeological Museum','Museum','Museum showcasing archaeological material associated with Sarnath.','Sarnath, Varanasi','Museum','1–2 hours','Ticket varies')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="bhu campus banaras hindu university" data-category="other">
+          <div><h4>🎓 Banaras Hindu University</h4><p>Large historic university campus with visitor attractions.</p></div>
+          <button class="small-btn" onclick="openDetails('Banaras Hindu University','Campus','Historic university campus and an important part of Varanasi.','BHU, Varanasi','University / Heritage','Flexible','Free / site dependent')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="godowlia market" data-category="other">
+          <div><h4>🛍️ Godowlia Market</h4><p>Busy central market area for local shopping.</p></div>
+          <button class="small-btn" onclick="openDetails('Godowlia Market','Shopping','Busy market area close to major old-city attractions.','Godowlia, Varanasi','Market','1–3 hours','Shopping budget')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="ravi das park" data-category="other">
+          <div><h4>🌳 Ravidas Park Area</h4><p>Leisure spot around the Assi side.</p></div>
+          <button class="small-btn" onclick="openDetails('Ravidas Park Area','Other Place','Leisure and local exploration option in southern Varanasi.','Varanasi','Leisure','Flexible','Check locally')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="ganga aarti evening" data-category="other">
+          <div><h4>🪔 Ganga Aarti</h4><p>Evening spiritual experience on the riverfront.</p></div>
+          <button class="small-btn" onclick="openDetails('Ganga Aarti','Experience','Evening riverfront spiritual experience. Exact arrangements can vary by location and seating option.','Varanasi Ghats','Spiritual experience','Evening','Free / paid options')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="nearby tourist places" data-category="other">
+          <div><h4>🗺️ Nearby Places</h4><p>More destinations can be added as partners join.</p></div>
+          <button class="small-btn" onclick="openDetails('Nearby Tourist Places','Other Place','Street Kashi can add verified nearby destinations, distance, transport and visit time.','Varanasi region','Tourism','Day trip','Depends on place')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GUIDE -->
+  <section class="section guide" id="guide">
+    <div class="section-head">
+      <div><h2>🧑‍🏫 Local Guides</h2><p>Choose a guide package; final price depends on route, duration and language.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Guide Packages</h3><span>Starting prices</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="local kashi guide 999" data-category="guide">
+          <div><h4>Local Kashi Guide</h4><p>Basic local guidance.</p><div class="price">From ₹999</div></div>
+          <button class="small-btn" onclick="openDetails('Local Kashi Guide','Guide','Basic guide service. Add verified guide name, phone number, languages and route after onboarding.','Kashi','Local guide','Half / full day','From ₹999')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="one day guide 1999" data-category="guide">
+          <div><h4>1 Day Guide</h4><p>Full-day city assistance.</p><div class="price">From ₹1,999/day</div></div>
+          <button class="small-btn" onclick="openDetails('1 Day Guide','Guide','Full-day guide package covering selected attractions.','Varanasi','City tour','1 Day','From ₹1,999/day')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="premium guide 2999" data-category="guide">
+          <div><h4>Premium Guide</h4><p>Personalised assistance.</p><div class="price">From ₹2,999/day</div></div>
+          <button class="small-btn" onclick="openDetails('Premium Guide','Guide','Premium personalised guide service. Language, route and inclusions can be selected.','Varanasi','Premium service','1 Day','From ₹2,999/day')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="custom kashi tour 3999" data-category="guide">
+          <div><h4>Custom Kashi Tour</h4><p>Custom sightseeing package.</p><div class="price">From ₹3,999</div></div>
+          <button class="small-btn" onclick="openDetails('Custom Kashi Tour','Guide Package','Custom package for selected tourist places, guide and optional transport.','Varanasi','Custom tour','As selected','From ₹3,999')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TRANSPORT -->
+  <section class="section transport" id="transport">
+    <div class="section-head">
+      <div><h2>🚕 Transport & Boat</h2><p>Local mobility and Ganga boat options with starting prices.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Local Transport</h3><span>Starting prices are indicative</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="scooty rental" data-category="transport">
+          <div><h4>🛵 Scooty Rental</h4><p>Two-wheeler rental option.</p><div class="price">From ₹400/day</div></div>
+          <button class="small-btn" onclick="openDetails('Scooty Rental','Transport','Add verified rental partner, rate, deposit, documents and contact number.','Varanasi','Scooty','Per day','From ₹400/day')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="auto rickshaw" data-category="transport">
+          <div><h4>🛺 Auto</h4><p>Local auto-rickshaw service.</p><div class="price">Fare on route</div></div>
+          <button class="small-btn" onclick="openDetails('Auto Rickshaw','Transport','Fare depends on route, time and negotiation. Street Kashi can connect verified local partners.','Varanasi','Auto','Local trip','Route based')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="tuk tuk" data-category="transport">
+          <div><h4>🛺 E-Rickshaw / Tuk-Tuk</h4><p>Local short-distance travel.</p><div class="price">Fare on route</div></div>
+          <button class="small-btn" onclick="openDetails('E-Rickshaw / Tuk-Tuk','Transport','Local short-distance travel with route-based fare.','Varanasi','E-Rickshaw','Local trip','Route based')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="taxi cab" data-category="transport">
+          <div><h4>🚕 Taxi / Cab</h4><p>Private cab for local or full-day trips.</p><div class="price">From ₹1,500/day</div></div>
+          <button class="small-btn" onclick="openDetails('Taxi / Cab','Transport','Add verified vehicle, driver, route, hourly/day package and contact details.','Varanasi','Cab','Local / Outstation','From ₹1,500/day')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="ganga boat ride boat ride" data-category="transport">
+          <div><h4>🛶 Ganga Boat Ride</h4><p>Boat ride for sunrise, sightseeing or evening.</p><div class="price">From ₹500/boat</div></div>
+          <button class="small-btn" onclick="openDetails('Ganga Boat Ride','Boat','Connect tourists with verified boat operators. Price varies by boat, duration, route and timing.','Ganga Ghats, Varanasi','Boat Ride','As selected','From ₹500/boat')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="sunrise boat ride" data-category="transport">
+          <div><h4>🌅 Sunrise Boat Ride</h4><p>Early morning Ganga experience.</p><div class="price">From ₹500/boat</div></div>
+          <button class="small-btn" onclick="openDetails('Sunrise Boat Ride','Boat Experience','Morning boat ride along the Ganga. Final price depends on boat and duration.','Ganga Ghats, Varanasi','Boat Ride','Morning','From ₹500/boat')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. STAY -->
+  <section class="section stay" id="stay">
+    <div class="section-head">
+      <div><h2>🏨 Hotels & Guest Houses</h2><p>Budget to premium stays. Prices shown are starting/indicative and should be verified before booking.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Stay Options</h3><span>Starting prices</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="guest house budget stay 999" data-category="stay">
+          <div><h4>🏠 Guest House</h4><p>Budget-friendly local stay.</p><div class="price">From ₹999/night</div></div>
+          <button class="small-btn" onclick="openDetails('Guest House','Stay','Add verified property name, room type, facilities, location, phone and booking link.','Varanasi','Guest House','Per night','From ₹999/night')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="hotel budget 1499" data-category="stay">
+          <div><h4>🏨 Budget Hotel</h4><p>Comfortable city stay.</p><div class="price">From ₹1,499/night</div></div>
+          <button class="small-btn" onclick="openDetails('Budget Hotel','Stay','Add verified hotel name, room category, facilities, location, phone and booking link.','Varanasi','Hotel','Per night','From ₹1,499/night')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="hostel 899" data-category="stay">
+          <div><h4>🛏️ Hostel</h4><p>Budget stay for students and travellers.</p><div class="price">From ₹899/night</div></div>
+          <button class="small-btn" onclick="openDetails('Hostel','Stay','Add verified hostel name, dorm/private room details, facilities and contact.','Varanasi','Hostel','Per night','From ₹899/night')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="taj ganges" data-category="stay">
+          <div><h4>⭐ Taj Ganges</h4><p>Premium hotel option in Varanasi.</p><div class="price">Premium • Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Taj Ganges','Hotel','Premium hotel option. Add live room inventory and current partner/booking rate before publishing.','Varanasi','Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="guleria kothi" data-category="stay">
+          <div><h4>🏛️ Guleria Kothi</h4><p>Heritage-style stay near the riverfront.</p><div class="price">Premium • Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Guleria Kothi','Hotel','Heritage-style stay. Add verified room inventory, amenities and booking link.','Varanasi','Heritage Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="palace on ganges" data-category="stay">
+          <div><h4>🏰 Palace on Ganges</h4><p>Heritage accommodation option.</p><div class="price">Premium • Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Palace on Ganges','Hotel','Heritage accommodation option. Add current room rates and booking information.','Varanasi','Heritage Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="hotel varanasi heritage" data-category="stay">
+          <div><h4>🏨 Hotel Varanasi Heritage</h4><p>Hotel option for travellers.</p><div class="price">Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Hotel Varanasi Heritage','Hotel','Add current room rate, facilities, contact and booking link.','Varanasi','Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="pearl courtyard" data-category="stay">
+          <div><h4>🏨 Pearl Courtyard</h4><p>Stay option for visitors.</p><div class="price">Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Pearl Courtyard','Hotel','Add current room rate, facilities, contact and booking link.','Varanasi','Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="taj nadesar" data-category="stay">
+          <div><h4>⭐ Taj Nadesar</h4><p>Luxury heritage-style accommodation.</p><div class="price">Premium • Check current rate</div></div>
+          <button class="small-btn" onclick="openDetails('Taj Nadesar','Hotel','Luxury accommodation option. Add live room inventory and current booking rate before publishing.','Varanasi','Luxury Hotel','Per night','Check current rate')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FOOD -->
+  <section class="section food" id="food">
+    <div class="section-head">
+      <div><h2>🍛 Food & Shopping</h2><p>Banarasi food, restaurants, cafes, markets and local products.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Food & Local Shopping</h3><span>Local discovery</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="banarasi food kachori sabzi jalebi lassi tamatar chaat" data-category="food">
+          <div><h4>🍛 Banarasi Food</h4><p>Kachori-sabzi, jalebi, lassi, chaat and more.</p><div class="price">From ₹50</div></div>
+          <button class="small-btn" onclick="openDetails('Banarasi Food','Food','Discover verified local food spots and popular Banarasi dishes.','Varanasi','Local food','Flexible','From ₹50')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="restaurant cafes" data-category="food">
+          <div><h4>☕ Restaurants & Cafes</h4><p>Food spots around the city.</p><div class="price">Various</div></div>
+          <button class="small-btn" onclick="openDetails('Restaurants & Cafes','Food','Add restaurant name, cuisine, address, price range, rating and booking/contact.','Varanasi','Restaurant / Cafe','Meal','Various')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="banarasi silk saree handloom" data-category="food">
+          <div><h4>🧵 Banarasi Silk</h4><p>Sarees and handloom products.</p><div class="price">Shop-specific</div></div>
+          <button class="small-btn" onclick="openDetails('Banarasi Silk Shopping','Shopping','Add verified shop name, product, price range, location and contact.','Varanasi','Silk / Handloom','Shopping','Shop-specific')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="godowlia market local market" data-category="food">
+          <div><h4>🛍️ Local Markets</h4><p>Markets for shopping and souvenirs.</p><div class="price">Shop-specific</div></div>
+          <button class="small-btn" onclick="openDetails('Local Markets','Shopping','Add market name, products, opening time and shopping tips.','Varanasi','Market','Shopping','Shop-specific')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="thandai lassi" data-category="food">
+          <div><h4>🥛 Lassi & Local Drinks</h4><p>Traditional Varanasi refreshment options.</p><div class="price">From ₹50</div></div>
+          <button class="small-btn" onclick="openDetails('Lassi & Local Drinks','Food','Street Kashi can list verified local shops and their current menu prices.','Varanasi','Local food','Flexible','From ₹50')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. EXPERIENCE -->
+  <section class="section experience" id="experience">
+    <div class="section-head">
+      <div><h2>🌅 Kashi Experiences</h2><p>Experiences visitors can plan through Street Kashi.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Popular Experiences</h3><span>Plan & enquire</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="sunrise boat ride" data-category="experience">
+          <div><h4>🌅 Sunrise Boat Ride</h4><p>Morning view of the Ganga.</p><div class="price">From ₹500/boat</div></div>
+          <button class="small-btn" onclick="openDetails('Sunrise Boat Ride','Experience','Morning boat ride along the Ganga. Final price depends on boat, duration and route.','Ganga Ghats','Boat Ride','Morning','From ₹500/boat')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="ganga aarti experience" data-category="experience">
+          <div><h4>🔥 Ganga Aarti Experience</h4><p>Evening Ganga experience.</p><div class="price">Free / paid options</div></div>
+          <button class="small-btn" onclick="openDetails('Ganga Aarti Experience','Experience','Add ghat, timing, seating/boat option and verified booking details.','Varanasi Ghats','Aarti','Evening','Free / paid options')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="temple tour package 999" data-category="experience">
+          <div><h4>🛕 Temple Tour</h4><p>Multiple temple sightseeing.</p><div class="price">From ₹999</div></div>
+          <button class="small-btn" onclick="openDetails('Temple Tour Package','Experience','Add temples covered, guide, vehicle, duration and package price.','Varanasi','Temple Tour','Custom','From ₹999')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="morning experience 499" data-category="experience">
+          <div><h4>🌄 Morning Experience</h4><p>Early-morning Kashi experience.</p><div class="price">From ₹499</div></div>
+          <button class="small-btn" onclick="openDetails('Morning Experience','Package','Sample Street Kashi package: morning sightseeing/experience. Final inclusions to be defined.','Varanasi','Experience Package','Morning','From ₹499')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="spiritual tour 999" data-category="experience">
+          <div><h4>🙏 Spiritual Tour</h4><p>Temple and spiritual sightseeing.</p><div class="price">From ₹999</div></div>
+          <button class="small-btn" onclick="openDetails('Spiritual Tour','Package','Sample Street Kashi spiritual package. Final inclusions and verified partner pricing to be added.','Varanasi','Spiritual Package','Custom','From ₹999')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="complete kashi trip custom" data-category="experience">
+          <div><h4>🗺️ Complete Kashi Trip</h4><p>Stay + guide + transport + experiences.</p><div class="price">Custom</div></div>
+          <button class="small-btn" onclick="openDetails('Complete Kashi Trip','Experience','Custom plan combining stay, guide, transport, food, temples and sightseeing.','Varanasi','Complete Trip','Custom','Custom')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. NIGHTLIFE -->
+  <section class="section nightlife" id="nightlife">
+    <div class="section-head">
+      <div><h2>🌙 Nightlife & Evening</h2><p>Evening hangouts, music, cafes and verified nightlife options.</p></div>
+    </div>
+    <div class="category">
+      <div class="category-title"><h3>Evening Discovery</h3><span>Verify opening hours before publishing</span></div>
+      <div class="items">
+        <div class="item place-item" data-name="night cafe evening cafe" data-category="nightlife">
+          <div><h4>☕ Evening Cafes</h4><p>Relaxed cafes and late-evening food spots.</p></div>
+          <button class="small-btn" onclick="openDetails('Evening Cafes','Nightlife','Add verified cafe names, opening hours, location and current menu information.','Varanasi','Cafe','Evening','Check venue')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="live music" data-category="nightlife">
+          <div><h4>🎵 Live Music</h4><p>Music and cultural evening options.</p></div>
+          <button class="small-btn" onclick="openDetails('Live Music','Nightlife','Add verified venues, event dates, timings and entry information.','Varanasi','Music','Evening','Event dependent')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="rooftop evening" data-category="nightlife">
+          <div><h4>🌃 Rooftop Evenings</h4><p>Rooftop dining and city views.</p></div>
+          <button class="small-btn" onclick="openDetails('Rooftop Evenings','Nightlife','Add verified rooftop venues, opening hours and booking/contact information.','Varanasi','Rooftop','Evening','Venue dependent')">View Details</button>
+        </div>
+        <div class="item place-item" data-name="clubs nightlife" data-category="nightlife">
+          <div><h4>🎉 Clubs & Nightlife</h4><p>Verified nightlife listings for eligible visitors.</p></div>
+          <button class="small-btn" onclick="openDetails('Clubs & Nightlife','Nightlife','Add verified venue name, age/entry rules, timings, events and contact information.','Varanasi','Nightlife','Evening','Venue dependent')">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-head">
+      <div><h2>📞 Contact Street Kashi</h2><p>For guide, hotel, guest house, boat, transport or tour enquiries.</p></div>
+    </div>
+    <div class="category contact-box">
+      <p><b>WhatsApp:</b> Tap the floating WhatsApp button to start an enquiry.</p>
+      <p><b>Partner onboarding:</b> Hotels, guest houses, guides, boat operators, restaurants and local businesses can be added after verification.</p>
+      <a class="btn" target="_blank" href="https://wa.me/919263996276?text=Hello%20Street%20Kashi%2C%20I%20want%20information%20about%20Kashi%20travel.">💬 WhatsApp Enquiry</a>
+      <a class="btn outline-dark" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Varanasi">📍 Open Varanasi in Maps</a>
+    </div>
+  </section>
+</div>
+
+</div>
+
+<div class="container"><div class="category" style="margin:28px 0 8px"><b>📌 Demo / verification note:</b><p class="verified-note">This college-demo version uses curated information and indicative “From” pricing where shown. Live availability, final prices, opening hours, entry rules and partner details should be verified before a real booking or launch.</p></div></div>
+<footer>
+  <div class="footer-logo">Street Kashi</div>
+  <p>आवा काशी 🙏</p>
+  <p>Kashi ke har experience, ek jagah.</p>
+  <p>Temples • Tourist Places • Guides • Boats • Hotels • Guest Houses • Food • Shopping • Experiences</p>
+  <p><small>Prices marked “From” are starting/indicative values. Verify live price, availability and venue rules before booking.</small></p>
+  <p>© 2026 Street Kashi • Varanasi</p>
+
+  <div class="creator-credit"><strong>Created by Vinayak Tiwari</strong><br><span>Street Kashi • College Startup Project</span></div>
+</footer>
+
+<a class="whatsapp" target="_blank" href="https://wa.me/919263996276">💬</a>
+
+<!-- DETAIL MODAL -->
+<div class="modal" id="detailModal" onclick="closeOutside(event)">
+  <div class="modal-box">
+    <button class="close" onclick="closeDetails()">×</button>
+    <div class="modal-tag" id="mTag"></div>
+    <h2 id="mTitle"></h2>
+    <p id="mDesc"></p>
+    <div class="detail-grid">
+      <div class="detail"><b>📍 Location</b><span id="mLocation"></span></div>
+      <div class="detail"><b>🏷️ Type</b><span id="mType"></span></div>
+      <div class="detail"><b>⏱️ Duration</b><span id="mDuration"></span></div>
+      <div class="detail"><b>💰 Price</b><span id="mPrice"></span></div>
+    </div>
+    <p><b>💡 Detail Fill Option:</b> Later you can replace these fields with real partner details, phone number, timing, photos, offers and booking links.</p>
+    <a href="#contact" class="btn" onclick="closeDetails()">Contact / Enquiry</a>
+  </div>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function openDetails(title,tag,desc,location,type,duration,price){
+  document.getElementById("mTitle").textContent=title;
+  document.getElementById("mTag").textContent=tag;
+  document.getElementById("mDesc").textContent=desc;
+  document.getElementById("mLocation").textContent=location;
+  document.getElementById("mType").textContent=type;
+  document.getElementById("mDuration").textContent=duration;
+  document.getElementById("mPrice").textContent=price;
+  document.getElementById("detailModal").classList.add("active");
+  document.body.style.overflow="hidden";
+}
+
+function closeDetails(){
+  document.getElementById("detailModal").classList.remove("active");
+  document.body.style.overflow="";
+}
+
+function closeOutside(e){
+  if(e.target.id==="detailModal") closeDetails();
+}
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape") closeDetails();
+});
+
+function searchItems(){
+  const input=document.getElementById("searchInput").value.trim().toLowerCase();
+  const category=document.getElementById("category").value.toLowerCase();
+  const items=[...document.querySelectorAll(".place-item")];
+  const result=document.getElementById("searchResult");
+  let found=0;
+
+  items.forEach(item=>{
+    const name=item.dataset.name || "";
+    const type=item.dataset.category || "";
+    const matchText=!input || name.includes(input) || type.includes(input);
+    const matchCategory=!category || type===category;
+    const show=matchText && matchCategory;
+    item.style.display=show ? "flex" : "none";
+    if(show) found++;
+  });
+
+  result.innerHTML=found
+    ? "🔎 Found <b>"+found+"</b> matching option(s)."
+    : "❌ No matching option found.";
+
+  if(found){
+    const first=items.find(i=>i.style.display!=="none");
+    first.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+</script>
+
+</body>
+</html>
